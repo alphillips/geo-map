@@ -1,0 +1,41 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="import" href="geo-map.html">
+    <link rel="import" href="geo-layer.html">
+    <style>
+      #content {
+        height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div id="content"> 
+
+      <geo-map zoom="4" lat="-21.811" lon="157.023" >
+          <geo-layer type="marker" lat="-10.262" lon="160.099">This is where I live</geo-layer>
+          <geo-layer type="marker" lat="-16.262" lon="162.099">This is where my friend lives</geo-layer>
+          <geo-layer type="wms" 
+                src="http://www.ga.gov.au/gisimg/services/marine_coastal/Multibeam_50m_Bathymetry_2012_RGB/MapServer/WMSServer" name="0"
+                format="image/png"
+                />
+      </geo-map>
+
+    </div>
+
+    <script src="js/leaflet.js"></script>
+    <script src="js/polymer.min.js"></script>
+    <script>
+      window.addEventListener('WebComponentsReady', function(e) {
+        var map = document.querySelector('geo-map');
+        console.log(map.zoom);
+        console.log(map.lat);
+      });
+    </script>
+  </body>
+</html>
+

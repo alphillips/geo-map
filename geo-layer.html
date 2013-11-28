@@ -1,0 +1,47 @@
+
+
+<polymer-element name="geo-layer" attributes="type lat lon src name format">
+
+  <template>
+    <div id="layer"></div>
+  </template>
+
+
+  <script>
+    Polymer('geo-layer', {
+      type: null,
+      lat:null,
+      lon: null,
+      src:null,
+      name:null,
+      format:null,
+
+      ready: function() {
+        if(this.type === 'marker'){
+          var addMarker = function(e) {
+            L.marker([this.lat, this.lon]).addTo(e.detail.map).bindPopup(this.innerHTML);            
+          };
+          this.getGeoMap().addEventListener('mapReady', addMarker.bind(this));
+        }  
+        if(this.type === 'wms'){
+          var addWms = function(e) {
+            L.tileLayer.wms(this.src,{
+                layers: this.name,
+                format: this.format,
+                transparent: true,    
+                opacity: 0.7       
+            }).addTo(e.detail.map);
+          };
+          this.getGeoMap().addEventListener('mapReady', addWms.bind(this));
+        }
+      },
+
+      getGeoMap: function(){
+        // just return this for now
+        // TODO: check for attribute
+        return this.parentNode;
+      }
+      
+    });
+  </script>
+</polymer-element>

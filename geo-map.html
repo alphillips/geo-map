@@ -1,0 +1,40 @@
+
+
+<polymer-element name="geo-map" attributes="zoom lat lon">
+
+  <template>
+  <style>
+    #map {
+      height: 100%;
+    }
+  </style>    
+    <link rel="stylesheet" href="css/leaflet.css">
+    <div id="map"></div>
+  </template>
+  <script src="js/leaflet.js"></script>
+
+  <script>
+    Polymer('geo-map', {
+      map:null,
+      zoom:4,
+      lat:null,
+      lon:null,
+      enteredView: function() {
+        this.map = L.map(this.$.map, {
+          center: new L.LatLng(this.lat, this.lon),
+          zoom: this.zoom
+        });
+
+        var osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+        var osmAttrib = 'Map data © OpenStreetMap contributors';
+
+        L.tileLayer(osmUrl, {
+          attribution: osmAttrib
+        }).addTo(this.map);
+
+        this.fire('mapReady', {map: this.map});
+      }
+      
+    });
+  </script>
+</polymer-element>
