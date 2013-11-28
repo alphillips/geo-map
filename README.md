@@ -1,7 +1,7 @@
 geo-map
 =======
 
-Create an leaflet map with some layer just using HTML. An experiement with Web Components using Polymer.
+Create an leaflet map with some layers just using HTML. An experiement with Web Components using Polymer.
 
 e.g.
 
