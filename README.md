@@ -15,3 +15,5 @@ e.g.
 </geo-map>
 ```
 
+Check out index.html to see how.
+
