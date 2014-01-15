@@ -17,3 +17,4 @@ e.g.
 
 Check out index.html to see how.
 
+View [Demo](https://c9.io/alphillips/geo-map/workspace/index.html)
